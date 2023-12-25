@@ -75,6 +75,11 @@ body {
   cursor: pointer;
 }
 
+.card:active {
+  scale: 1.1;
+  transition: scale 0.4s ease-in;
+}
+
 @keyframes intro {
   100% {
     bottom: 0;
