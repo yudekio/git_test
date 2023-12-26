@@ -12,10 +12,111 @@
       <h1 id="text">Привет, странник! Выбери любую из 3 электрических карт</h1>
     </div>
     <div class="cards-wrapper">
-      <div class="card"><p></p></div>
-      <div class="card"><p></p></div>
-      <div class="card"><p></p></div>
+      <div class="card card-1"><p class="hide-text">лед</p></div>
+      <div class="card card-2"><p class="hide-text">огонь</p></div>
+      <div class="card card-3"><p class="hide-text">молния</p></div>
     </div>
-    <div class="lightning flashit"></div>
+    <div style="text-align: center">
+      <p id="text">AI choose: <span id="AI">лед</span></p>
+      <p id="result"></p>
+      <button class="hide-text" id="btn">РЕСТАРТ</button>
+    </div>
+    <script>
+      let card1 = document.querySelector(".card-1");
+      let card2 = document.querySelector(".card-2");
+      let card3 = document.querySelector(".card-3");
+      let AIText = document.getElementById("AI");
+      let result = document.getElementById("result");
+      let button = document.getElementById("btn");
+
+      card1.addEventListener("click", card1ClickHandler);
+      card2.addEventListener("click", card2ClickHandler);
+      card3.addEventListener("click", card3ClickHandler);
+      button.addEventListener("click", init);
+
+      const cardArr = ["лед", "огонь", "молния"];
+      let firstCard = "";
+      let secondCard = "";
+      AIText.innerHTML = "";
+      function revealText(card) {
+        let newName = chooseRandomName(cardArr);
+        firstCard = newName;
+        replaceName(card, newName);
+        card.childNodes[0].classList.remove("hide-text");
+
+        // Remove event listeners after the first click
+        card1.removeEventListener("click", card1ClickHandler);
+        card2.removeEventListener("click", card2ClickHandler);
+        card3.removeEventListener("click", card3ClickHandler);
+
+        AI();
+        youLose(compare());
+        showRestart();
+      }
+
+      function card1ClickHandler(event) {
+        revealText(event.currentTarget);
+      }
+
+      function card2ClickHandler(event) {
+        revealText(event.currentTarget);
+      }
+
+      function card3ClickHandler(event) {
+        revealText(event.currentTarget);
+      }
+
+      function chooseRandomName(arr) {
+        return arr[Math.floor(Math.random() * 3)];
+      }
+
+      function replaceName(el, name) {
+        el.childNodes[0].innerHTML = name;
+      }
+
+      function AI() {
+        let AIName = chooseRandomName(cardArr);
+        secondCard = AIName;
+        setTimeout(() => (AIText.innerHTML = AIName), 2000);
+      }
+
+      function printing(str) {
+        for (let i = 0; i <= str.length - 1; i++) {
+          setTimeout(() => (result.innerHTML += str[i]), 100 * i);
+        }
+      }
+
+      function youLose(text) {
+        setTimeout(() => printing(text), 3000);
+      }
+
+      function compare() {
+        return firstCard.length > secondCard.length
+          ? `Вы победили! ${firstCard} сильнее ${secondCard}`
+          : firstCard.length < secondCard.length
+          ? `Вы проиграли.. ${firstCard} слабее ${secondCard}`
+          : `Ничья! ${firstCard} равно ${secondCard}`;
+      }
+
+      function showRestart() {
+        setTimeout(() => btn.classList.remove("hide-text"), 5000);
+      }
+
+      function init() {
+        card1.addEventListener("click", card1ClickHandler);
+        card2.addEventListener("click", card2ClickHandler);
+        card3.addEventListener("click", card3ClickHandler);
+
+        const cardArr = ["лед", "огонь", "молния"];
+        let firstCard = "";
+        let secondCard = "";
+        AIText.innerHTML = "";
+        result.innerHTML = "";
+        card1.childNodes[0].classList.add("hide-text");
+        card2.childNodes[0].classList.add("hide-text");
+        card3.childNodes[0].classList.add("hide-text");
+        button.classList.add("hide-text");
+      }
+    </script>
   </body>
 </html>

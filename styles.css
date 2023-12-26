@@ -37,6 +37,24 @@ body {
   animation-play-state: paused;
 }
 
+#btn {
+  padding: 1.2rem 2.4rem;
+  font-family: "Rubik Lines", sans-serif;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+  background-image: url(https://media.istockphoto.com/id/1348578576/vector/glowing-halftone-neon-background.jpg?s=612x612&w=0&k=20&c=erPXkmcG3zCjS1YL0_znbGIGxMQ-iO0BO0XcEgfbZyw=);
+}
+
+#btn:active {
+  scale: 0.9;
+  transition: all 0.2s ease;
+}
+
 .title-wrapper {
   padding: 0rem 2rem;
   max-width: 60%;
@@ -60,13 +78,18 @@ body {
 }
 
 .card {
-  padding: 4rem 3rem;
+  padding: 4rem 0;
+  width: 8rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   background-color: rgba(128, 128, 128, 0.205);
   backdrop-filter: blur(2px);
   animation: tilt-shaking 6s ease-in-out infinite;
   animation-delay: 2s;
+}
+
+.card p {
+  text-align: center;
 }
 
 .card:hover {
@@ -78,6 +101,11 @@ body {
 .card:active {
   scale: 1.1;
   transition: scale 0.4s ease-in;
+}
+
+.hide-text {
+  opacity: 0;
+  transition: all 2s ease;
 }
 
 @keyframes intro {
