@@ -20,6 +20,21 @@
       <p id="text">AI choose: <span id="AI">лед</span></p>
       <p id="result"></p>
       <button class="hide-text" id="btn">РЕСТАРТ</button>
+      <div
+        id="mmr"
+        style="
+          position: absolute;
+          top: 0;
+          background-color: grey;
+          padding: 0.2rem 0.4rem;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 5px;
+          background-color: rgba(128, 128, 128, 0.205);
+          backdrop-filter: blur(2px);
+        "
+      >
+        MMR
+      </div>
     </div>
     <script>
       let card1 = document.querySelector(".card-1");
@@ -28,6 +43,7 @@
       let AIText = document.getElementById("AI");
       let result = document.getElementById("result");
       let button = document.getElementById("btn");
+      let mmrEl = document.getElementById("mmr");
 
       card1.addEventListener("click", card1ClickHandler);
       card2.addEventListener("click", card2ClickHandler);
@@ -38,6 +54,13 @@
       let firstCard = "";
       let secondCard = "";
       AIText.innerHTML = "";
+      let mmr = localStorage.getItem("mmrKey");
+      if (mmr === null) {
+        mmr = 0;
+      } else {
+        mmr = parseInt(mmr);
+      }
+      mmrEl.innerHTML = `MMR: ${mmr}`;
       function revealText(card) {
         let newName = chooseRandomName(cardArr);
         firstCard = newName;
@@ -52,6 +75,7 @@
         AI();
         youLose(compare());
         showRestart();
+        addMMR();
       }
 
       function card1ClickHandler(event) {
@@ -92,10 +116,28 @@
 
       function compare() {
         return firstCard.length > secondCard.length
-          ? `Вы победили! ${firstCard} сильнее ${secondCard}`
+          ? `Вы победили! (+30) ${firstCard} сильнее ${secondCard}`
           : firstCard.length < secondCard.length
-          ? `Вы проиграли.. ${firstCard} слабее ${secondCard}`
-          : `Ничья! ${firstCard} равно ${secondCard}`;
+          ? `Вы проиграли.. (-25) ${firstCard} слабее ${secondCard}`
+          : `Ничья! (+0) ${firstCard} равно ${secondCard}`;
+      }
+
+      function resultMMR() {
+        return firstCard.length > secondCard.length
+          ? 30
+          : firstCard.length < secondCard.length
+          ? -25
+          : 0;
+      }
+
+      function updateMMR() {
+        mmr += resultMMR();
+        localStorage.setItem("mmrKey", mmr);
+        mmrEl.innerHTML = `MMR: ${mmr}`;
+      }
+
+      function addMMR() {
+        setTimeout(() => updateMMR(), 6000);
       }
 
       function showRestart() {
