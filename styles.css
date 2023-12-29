@@ -7,6 +7,35 @@ body {
   font-size: 20px;
 }
 
+.floating-panel {
+  position: absolute;
+
+  background-color: grey;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.205);
+  backdrop-filter: blur(2px);
+}
+
+#mmr {
+  top: 0;
+}
+
+#menu {
+  top: 0;
+  right: 0.4rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+#menu:active,
+#menu:hover {
+  scale: 1.04;
+  transition: all 0.12s ease;
+}
+
 #image {
   animation: intro 3s 1;
 }
@@ -73,8 +102,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 1.6rem;
-  animation: cards-intro 1s ease-in-out both;
-  animation-delay: 2s;
+  animation: cards-intro 0.4s ease-in-out both;
+  animation-delay: 0.6s;
 }
 
 .card {
@@ -104,7 +133,7 @@ body {
 }
 
 .hide-text {
-  opacity: 0;
+  display: none;
   transition: all 2s ease;
 }
 
@@ -192,4 +221,49 @@ body {
   to {
     transform: rotate(0deg);
   }
+}
+
+#table-array {
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  max-width: 60rem;
+}
+
+#table-array td,
+#table-array th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: black;
+}
+
+#table-array td:nth-child(1) {
+  background-color: #f2f2f2;
+}
+
+#table-array td:nth-child(2) {
+  background-color: #7cb16d;
+}
+
+#table-array th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #042baa;
+  color: white;
+}
+
+.active {
+  display: block !important;
+}
+
+.btn-buy {
+  cursor: pointer;
+  background-color: crimson;
+  padding: 0;
+  color: white !important;
+}
+
+.sold {
+  opacity: 0.3;
 }

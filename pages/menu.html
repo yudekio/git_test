@@ -3,9 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
     <title>Menu</title>
   </head>
   <body>
-    Menu
+    <div id="show-btn"></div>
+    <div>
+      <table id="table-array">
+        <tr>
+          <th>Улучшение</th>
+          <th>Цена</th>
+        </tr>
+        <tr>
+          <td id="change">+1 карта</td>
+          <td>20 коинов</td>
+          <td class="btn-buy sold">купить</td>
+        </tr>
+        <tr>
+          <td>+0.2 коинов в секунду</td>
+          <td>50 коинов</td>
+          <td class="btn-buy">купить</td>
+        </tr>
+        <tr>
+          <td>Суперспособность: искажение</td>
+          <td>100 коинов</td>
+          <td class="btn-buy">купить</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      const btnBuyArr = document.querySelectorAll(".btn-buy");
+      console.log(btnBuyArr);
+      const div = document.createElement("div");
+      div.style.cssText =
+        "background-color:#042baa ; width: 10rem; padding: 0.8rem 1.6rem; text-align: center; font-weight: bold; border-radius: 10px; cursor: pointer; border: 2px solid grey";
+
+      div.innerHTML = "Магазин";
+      div.addEventListener("click", () => {
+        document.getElementById("table-array").classList.toggle("active");
+      });
+      console.log(div);
+      document.getElementById("show-btn").appendChild(div);
+      function repeatString(str, i) {
+        let result = "";
+        for (let k = 0; k < i; k++) {
+          result = result.concat(str);
+        }
+        return result;
+      }
+
+      console.log(repeatString("hi", 3));
+    </script>
   </body>
 </html>
