@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100dvh">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,9 +19,10 @@
       background: #6e7255;
       padding: 0;
       margin: 0;
+      height: 100dvh;
     "
   >
-    <div style="position: relative">
+    <div>
       <h2
         id="name"
         style="
@@ -49,10 +50,38 @@
           height: 100dvh;
           position: absolute;
           right: 0;
+          top: 0;
         "
       >
-        <a href="/world-creator.html">Back ></a>
+        <div style="padding: 1rem">
+          <span style="font-weight: bold">Simulation</span>
+          <p>Size:</p>
+          <p>Season:</p>
+          <p>Day 1</p>
+          <a
+            href="/world-creator.html"
+            style="
+              background-color: #ff4e4e;
+              color: white;
+              text-decoration: none;
+              font-weight: bold;
+              padding: 0.6rem 0rem;
+              text-align: center;
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 30%;
+              font-size: 14px;
+            "
+            >Back</a
+          >
+        </div>
       </aside>
+    </div>
+    <div style="height: 100%">
+      <div id="game" style="height: inherit">
+        <div style="height: 3rem"></div>
+      </div>
     </div>
   </body>
 </html>
