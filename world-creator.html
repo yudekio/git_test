@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="world-creator.js" defer></script>
+    <title>World Creator</title>
+  </head>
+  <body
+    style="
+      background-image: url(/bg-world-creator.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      font-family: 'Montserrat', sans-serif;
+    "
+  >
+    <div
+      style="
+        margin-top: 14rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          width: 30rem;
+          height: 20rem;
+          border-radius: 2.5rem;
+          background-color: #1b171a;
+          padding: 0 1rem;
+        "
+      >
+        <h2
+          style="
+            background-color: #d9d9d9;
+
+            padding: 1rem;
+            border-radius: 1.25rem;
+            font-weight: bold;
+            text-align: center;
+          "
+        >
+          Create World
+        </h2>
+
+        <div>
+          <div>
+            <label style="color: white; font-weight: bold">Write name: </label>
+            <input id="name" />
+          </div>
+          <div>
+            <label style="color: white; font-weight: bold">Choose size: </label>
+            <select id="world-size" name="size">
+              <option value="6">6x6</option>
+              <option value="12">12x12</option>
+              <option value="24">24x24</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="color: white; font-weight: bold"
+              >Choose season:
+            </label>
+            <select id="world-season" name="season" onchange="changeEmoji()">
+              <option value="winter">winter</option>
+              <option value="spring">spring</option>
+              <option value="summer">summer</option>
+              <option value="fall">fall</option>
+            </select>
+            <span id="emoji">❄️</span>
+          </div>
+          <button
+            style="cursor: pointer; padding: 1rem 2rem; margin-top: auto"
+            onclick="createWorld()"
+          >
+            create
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
