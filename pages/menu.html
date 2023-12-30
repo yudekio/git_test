@@ -17,7 +17,7 @@
         <tr>
           <td id="change">+1 карта</td>
           <td>20 коинов</td>
-          <td class="btn-buy sold">купить</td>
+          <td class="btn-buy">купить</td>
         </tr>
         <tr>
           <td>+0.2 коинов в секунду</td>
@@ -31,9 +31,53 @@
         </tr>
       </table>
     </div>
+    <div>
+      <h2 id="h2-text">List<span> </span></h2>
+      <form>
+        <label>Add new item:</label>
+        <input type="text" id="input" />
+        <button id="btn-add">Add</button>
+      </form>
+      <ul id="list"></ul>
+    </div>
     <script>
+      // DOM Elements
+      const inputEl = document.querySelector("#input");
+      const btnAdd = document.querySelector("#btn-add");
+      const h2Text = document.querySelector("#h2-text");
+      const list = document.querySelector("#list");
+
+      // Init
+      let inputVal = "";
+
+      // Event listeners
+      inputEl.addEventListener("input", handleInput);
+
+      btnAdd.addEventListener("click", (event) => {
+        event.preventDefault();
+        addEl(inputVal);
+      });
+
+      // Functions
+
+      function handleInput(event) {
+        h2Text.innerText = event.target.value;
+        inputVal = event.target.value;
+      }
+      function addEl(text) {
+        const newEl = document.createElement("li");
+        newEl.innerHTML = `${text} <button id="btn-del" onclick="delEl(event)">delete</button>`;
+        list.appendChild(newEl);
+      }
+
+      function delEl(e) {
+        const listItem = e.target.parentNode;
+        listItem.parentNode.removeChild(listItem);
+      }
+
+      /////////////////////////////////////////////////////////
+
       const btnBuyArr = document.querySelectorAll(".btn-buy");
-      console.log(btnBuyArr);
       const div = document.createElement("div");
       div.style.cssText =
         "background-color:#042baa ; width: 10rem; padding: 0.8rem 1.6rem; text-align: center; font-weight: bold; border-radius: 10px; cursor: pointer; border: 2px solid grey";
@@ -42,17 +86,11 @@
       div.addEventListener("click", () => {
         document.getElementById("table-array").classList.toggle("active");
       });
-      console.log(div);
       document.getElementById("show-btn").appendChild(div);
-      function repeatString(str, i) {
-        let result = "";
-        for (let k = 0; k < i; k++) {
-          result = result.concat(str);
-        }
-        return result;
-      }
 
-      console.log(repeatString("hi", 3));
+      btnBuyArr.forEach((button) =>
+        button.addEventListener("click", (e) => e.target.classList.add("sold"))
+      );
     </script>
   </body>
 </html>
