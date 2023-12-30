@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "regression": "^2.0.1"
+  }
+}
