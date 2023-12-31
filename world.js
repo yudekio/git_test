@@ -35,7 +35,7 @@ function createCanvas() {
 
       row.appendChild(cell);
     }
-    document.querySelector("#game").appendChild(row);
+    document.querySelector("#game2").appendChild(row);
   }
 }
 
