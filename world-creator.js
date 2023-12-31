@@ -24,7 +24,7 @@ function createWorld() {
   worldData.size = selectedSize;
   worldData.season = selectedSeason;
 
-  window.location.href = `/world.html?name=${encodeURIComponent(
+  window.location.href = `/pages/world.html?name=${encodeURIComponent(
     worldData.name
   )}&size=${encodeURIComponent(worldData.size)}&season=${encodeURIComponent(
     worldData.season
